@@ -28,6 +28,10 @@ on:
       exclude:
         description: "exclude files"
         required: false
+      desktop:
+        description: "Build Desktop: no / gnome / xfce, etc."
+        required: false
+        default: "no"
 
 env:
   TZ: Asia/Shanghai
@@ -95,7 +99,7 @@ jobs:
           KERNEL_ONLY=\"${{ github.event.inputs.kernelOnly }}\" \
           KERNEL_CONFIGURE=\"no\" \
           BUILD_MINIMAL=\"no\" \
-          BUILD_DESKTOP=\"no\" \
+          BUILD_DESKTOP=\"${{ github.event.inputs.desktop }}\" \
           COMPRESS_OUTPUTIMAGE=\"yes\" \
           EXPERT=\"yes\" \
           EXTRAWIFI=\"no\" \
